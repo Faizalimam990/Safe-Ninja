@@ -88,6 +88,7 @@
   </style>
 </head>
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="#">Risk Ninja</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -111,9 +112,10 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success" type="submit">Report Incident</button>
-      </form>
+      <button class="btn btn-outline-success" type="button" data-toggle="modal" data-target="#incidentModal">
+        Report Incident
+      </button>
+      
     </div>
   </nav>
 
@@ -154,6 +156,57 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--Form  modal of Report Incident -->
+  <div class="modal fade" id="incidentModal" tabindex="-1" role="dialog" aria-labelledby="incidentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content" style="background-color: #1a1a1a; border: 2px solid #ff2e63; border-radius: 15px; color: white;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="incidentModalLabel">Report an Incident</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="/submit-incident">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="title">Incident Title</label>
+              <input type="text" class="form-control" id="title" name="Title" placeholder="Enter title" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Incident Description</label>
+              <textarea class="form-control" id="description" name="Description" rows="4" placeholder="Describe the incident..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="incident_type">Incident Type</label>
+              <input type="text" class="form-control" id="incident_type" name="Incident_type" placeholder="e.g. Cyber Attack" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Time of Incident</label>
+              <input type="datetime-local" class="form-control" id="time" name="time">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
 
   <footer class="text-center mt-5 mb-3">
     <p class="text-muted">&copy; 2025 Risk Ninja. Built with 💻 + 🧠 by flazetech</p>
