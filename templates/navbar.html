@@ -1,7 +1,6 @@
 
-
 <style>
-    body {
+   body {
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
@@ -15,15 +14,7 @@
       transition: background-color 0.3s ease-in-out;
     }
 
-    .navbar:hover {
-      background-color: #ff2e63;
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      color: #ff2e2e !important;
-      transition: color 0.3s ease;
-    }
+  
 
     .navbar-brand:hover {
       color: #fff !important;
@@ -60,34 +51,40 @@
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 46, 99, 1 %29)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
-
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Risk Ninja</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Latest Incidents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Employee Reports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success"   type="submit"><a  style="text-decoration: none; color: white;" href="/report-incident/">Report Incident </a></button>
-      </form>
-    </div>
-  </nav>
+  <a class="navbar-brand" href="#"><i class="fa-solid fa-user-shield mr-2"></i>RiskNinja</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#safeninjaNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="safeninjaNavbar">
+    <ul class="navbar-nav mr-auto ml-3">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Why RiskNinja</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown">
+          Login
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/businesslogin/">Login as Business</a>
+          <a class="dropdown-item" href="/employeelogin/">Login as Employee</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

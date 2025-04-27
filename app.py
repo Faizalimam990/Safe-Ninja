@@ -1,12 +1,29 @@
 from flask import Flask,redirect,render_template
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app=Flask(__name__)
 
+app.secret_key = 'S4F3-N1NJA-1$O9@*&6FA@^%@9180'
 @app.route('/')
 
 def index():
     return render_template('index.html')
-'''''''
+
+
+
+
+@app.route('/employeelogin/')
+
+def employeelogin():
+
+    return render_template('employeelogin.html')
+
+
+@app.route('/businesslogin/')
+
+def businesslogin():
+
+    return render_template('businesslogin.html')
 
 @app.route('/admin')
 
