@@ -6,6 +6,8 @@ Base = declarative_base()
 
 class Business(Base):
     __tablename__ = 'businesses'
+    email=Column(String(255),nullable=False)
+    password = Column(String(255), nullable=False)
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
@@ -14,6 +16,7 @@ class Business(Base):
     employees = relationship("Employee", back_populates="business", cascade="all, delete-orphan")
     incidents = relationship("Incident", back_populates="business", cascade="all, delete-orphan")
 
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class Employee(Base):
     __tablename__ = 'employees'
@@ -21,11 +24,11 @@ class Employee(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False)
     email = Column(String(255), unique=True, nullable=False)
+    password = Column(String(255), nullable=False)  # Add this line
     is_admin = Column(Boolean, default=False)
 
     business_id = Column(Integer, ForeignKey('businesses.id'), nullable=False)
     business = relationship("Business", back_populates="employees")
-
     reported_incidents = relationship("Incident", back_populates="reporter")
 
 

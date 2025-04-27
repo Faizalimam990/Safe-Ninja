@@ -9,12 +9,21 @@ app.secret_key = 'S4F3-N1NJA-1$O9@*&6FA@^%@9180'
 def index():
     return render_template('index.html')
 
-
-
-
 @app.route('/employeelogin/')
-
 def employeelogin():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        employee = db.session.query(Employee).filter_by(email=email).first()
+
+        if employee and check_password_hash(employee.password, password):
+            session['employee_id'] = employee.id
+            session['is_admin'] = employee.is_admin
+            flash('Login successful!', 'success')
+            return redirect(url_for('dashboard'))  # Replace with your route
+        else:
+            flash('Invalid email or password', 'danger')
 
     return render_template('employeelogin.html')
 
