@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Safe Ninja - Navbar</title>
+  <title>Risk Ninja - Elevate Incident Management</title>
+
+  <!-- Bootstrap 4.6 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/64085cd283.js" crossorigin="anonymous"></script>
-  
-  <!-- Adding AOS for animations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
 
@@ -18,29 +21,121 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
+      background: radial-gradient(ellipse at top, #000000, #010006, #090909);
+      color: white;
+      overflow-x: hidden;
+    }
+    /* Navbar */
+    .navbar {
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .nav-link {
+      position: relative;
+      margin-right: 15px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ff416c;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #ffffff;
+    }
+    .hero p {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #d1d1d1;
+    }
+    .btn-hero {
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      border: none;
+      padding: 12px 30px;
+      margin-top: 30px;
+      font-weight: bold;
+      border-radius: 30px;
+      color: white;
+      transition: all 0.3s;
+    }
+    .btn-hero:hover {
+      box-shadow: 0 0 15px #ff4b2b;
+      transform: scale(1.05);
+    }
+
+    /* Feature Cards */
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .hero-card:hover {
+      transform: translateY(-10px);
+    }
+    .hero-card h4 {
+      font-weight: 700;
+      margin-top: 15px;
+      color: #ffffff;
+    }
+    .hero-card p {
+      color: #cccccc;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    /* Scrolling Messages */
+    .scrolling-messages {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+      height: 400px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
       color: white;
     }
-
-    .navbar {
-      background-color: #1a1a1a;
-      box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-      transition: background-color 0.3s ease-in-out;
+    #messagesContainer {
+      overflow: hidden;
+      height: 150px;
+      position: relative;
     }
-
-  
-
-    .navbar-brand:hover {
-      color: #fff !important;
-    }
-
-    .navbar-nav .nav-link {
-      color: #e0e0e0 !important;
-      transition: color 0.3s;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #ff2e63 !important;
+    #messagesList div {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      margin: 10px 0;
+      padding: 12px 30px;
+      font-weight: 600;
+      color: white;
+      text-align: center;
+      transition: transform 0.5s;
+      width: 300px;
     }
 
     .dropdown-menu {
@@ -58,194 +153,292 @@
       color: #fff;
     }
 
-    .navbar-toggler {
-      border-color: #ff2e63;
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 46, 99, 1 %29)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-
-    .responsive-map-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 70%;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    .responsive-map-wrapper iframe {
-      position: absolute;
-      top: -30%;
-      left: 0;
-      width: 100%;
-      height: 75%;
-      border: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      transition: transform 0.5s ease;
-    }
-
-    .responsive-map-wrapper iframe:hover {
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 768px) {
-      .responsive-map-wrapper iframe {
-        top: -25%;
-      }
-    }
-
-   
-
-    .hero {
-      padding: 50px 20px;
-      background: linear-gradient(to right, #1f4037, #99f2c8);
-      text-align: center;
-      border-radius: 30px;
-      margin-top: 50px;
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #d1d1d1;
-    }
-
-    .btn-hero {
-      background-color: #ff2e63;
-      color: #fff;
-      font-weight: 600;
-      transition: background-color 0.3s;
-      border-radius: 50px;
-      padding: 12px 30px;
-      font-size: 1rem;
-    }
-
-    .btn-hero:hover {
-      background-color: #ff1a3c;
-    }
-.hero-card{
-  border: 1px solid black;
-  background-color:rgb(32, 30, 30) ;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  border-radius: 20px 20px 20px 20px;
-}
-
-
   </style>
 </head>
+
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#"><i class="fa-solid fa-user-shield mr-2"></i>RiskNinja</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#safeninjaNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <a class="navbar-brand" href="#"><i class="fa-solid fa-user-shield mr-2"></i>Risk Ninja</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="safeninjaNavbar">
-      <ul class="navbar-nav mr-auto ml-3">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Why RiskNinja</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown">
-            Login
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="/businesslogin/">Login as Business</a>
-            <a class="dropdown-item" href="/employeelogin/">Login as Employee</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section with Animation -->
- <div class="container-fluid" style="background-color: black;">
-    <div class="row">
-      
-        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
-            <h4 class="display-4 fw-bold">
-              <span class="text-danger">Level Up </span>Your Incident Response
-            </h4>
-            <p class="lead">With powerful features and automations.Builtin<span class="text" style="color: red; font-weight: 400;" > Integration with</span></p>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJSFqGUBZ0ipCM6RfwVtZG83IlNWvzTwTVVA&s" class="img-fluid ml-5" alt="" srcset="">
-                    </div>
-                </div>
-            </div>
-          </div>
-        <div class="col-md-6">
-            <img src="{{ url_for('static', filename='risk-ma.png') }}" class="img-fluid" height="300px" width="500" alt="Risk Ninja">
-
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav mr-auto ml-4">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Why RiskNinja</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" data-toggle="dropdown">Login</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/businesslogin/">Business Login</a>
+          <a class="dropdown-item" href="/employeelogin/">Employee Login</a>
         </div>
-    </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 
- </div>
- <div class="container">
-  <div class="row justify-content-center">
-    
-    <!-- Card 1 -->
-    <div class="col-md-4 hero-card text-center mb-4 px-2">
-      <i class="fa-regular fa-keyboard mt-2 fa-3x" style="color: red;"></i>
-      <h4 class="display-6 mt-3">Add New Field and Customizations</h4>
-      <p class="text-muted" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-        Provide custom fields for smarter management tailored to your needs. Customize your fields as per your needs.
-      </p>
-    </div>
+<!-- Hero Section -->
+<div class="hero container" data-aos="fade-up">
+  <h1><span style="color: #ff4b2b;">Level Up</span> Your Incident Response</h1>
+  <p>Powerful features, real-time automation, and seamless integration to Slack, WhatsApp, and more.</p>
+  <button class="btn-hero">Get Started</button>
+</div>
 
-    <!-- Card 2 -->
-    <div class="col-md-4 hero-card text-center mb-4 px-2">
-      <i class="fa-solid fa-bell mt-2 fa-3x" style="color: red;"></i>
-      <h4 class="display-6 mt-3">Instant Alerts & One-Click Incident Summary</h4>
-      <p class="text-muted" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-        Create instant alerts and summarize incident responses in just one click with the help of our AI.
-      </p>
+<!-- Features -->
+<div class="container py-5">
+  <div class="row text-center">
+    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="hero-card">
+        <i class="fa-solid fa-keyboard fa-3x mb-3" style="color:#ff416c;"></i>
+        <h4>Custom Fields & Smart Config</h4>
+        <p>Create, configure and adapt your fields effortlessly to your team's needs.</p>
+      </div>
     </div>
+    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="hero-card">
+        <i class="fa-solid fa-bell fa-3x mb-3" style="color:#ff416c;"></i>
+        <h4>Real-Time Alerts & AI Summaries</h4>
+        <p>Be alerted instantly and generate insightful incident reports with a single click.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="hero-card">
+        <i class="fa-solid fa-comments fa-3x mb-3" style="color:#ff416c;"></i>
+        <h4>Easy Multi-App Integrations</h4>
+        <p>Plug into Slack, WhatsApp, Teams and more with our easy API connectors.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scrolling Incident Messages -->
+<div class="scrolling-messages">
+  <div id="messagesContainer" class="d-flex flex-column align-items-center mb-4">
+    <div id="messagesList" class="d-flex flex-column align-items-center">
+      <!-- Messages inserted dynamically -->
+    </div>
+  </div>
+
+  <h2><strong>Things <em>Will</em> Go Wrong.</strong></h2>
+  <p class="mt-3">But with RiskNinja, chaos won't stand a chance.</p>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <!-- Left Column: Incident Chart and Status Chart (stacked) -->
    
 
-    <!-- Card 3 -->
-    <div class="col-md-4 hero-card text-center mb-4 px-2">
-      <i class="fa-regular fa-keyboard mt-2 fa-3x" style="color: red;"></i>
-      <h4 class="display-6 mt-3">Easy Integration with Communication Channels</h4>
-      <p class="text-muted" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-        Seamlessly integrate Riskninja with your favorite apps like Slack, WhatsApp, and more.
-      </p>
+    <!-- Right Column: Expense Chart -->
+    <div class="col-md-6">
+  <!-- Top: Two Charts Side-by-Side -->
+  <div class="d-flex flex-wrap mb-3">
+    <!-- Incident Chart -->
+    <div class="p-2" style="flex: 1 1 50%;">
+      <div class="card bg-dark text-white shadow rounded p-3 h-100">
+        <h6 class="mb-2">Incident Management</h6>
+        <canvas id="incidentChart" height="180"></canvas>
+      </div>
     </div>
 
+    <!-- Expenses Chart -->
+    <div class="p-2" style="flex: 1 1 50%;">
+      <div class="card bg-dark text-white shadow rounded p-3 h-100">
+        <h6 class="mb-2">Expenses</h6>
+        <canvas id="expenseChart" height="180"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Full-Width Chart -->
+  <!-- Bottom: Compact Doughnut Chart Matching Other Card Heights -->
+<div class="card bg-dark text-white shadow rounded p-3" style="height: 350px;">
+  <h6 class="mb-3">Incident Status</h6>
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <canvas id="statusChart" height="250" style="max-width: 290px;"></canvas>
   </div>
 </div>
 
 
-  
+      
+     
+    </div>
+  </div>
+</div>
 
-  
 
 
-  <!-- Initialize AOS -->
-  <script>
-    AOS.init();
-  </script>
+
+
+
+
+
+
+
+
+
+
+<!-- AOS Init -->
+<script>
+  AOS.init({ once: true });
+</script>
+
+
+
+<script>
+  var messages = [
+    "🚨 Database connection failure detected.",
+    "⚡ High CPU usage alert on Node 4.",
+    "🔒 Unauthorized access attempt stopped.",
+    "💾 Backup system failed at 02:00 AM.",
+    "📡 API latency spikes recorded.",
+    "🛠️ Server maintenance ongoing.",
+    "📢 Slack integration updated successfully.",
+    "🔥 Memory leak isolated in microservice.",
+    "⚙️ Payment gateway downtime detected.",
+    "🧠 AI engine auto-corrected incident flow."
+  ];
+
+  var messagesList = document.getElementById('messagesList');
+
+  messages.forEach(function(text) {
+    var msg = document.createElement('div');
+    msg.innerText = text;
+    messagesList.appendChild(msg);
+  });
+
+  // Duplicate a few for smooth infinite scroll
+  for (let i = 0; i < 3; i++) {
+    let clone = messagesList.children[i].cloneNode(true);
+    messagesList.appendChild(clone);
+  }
+
+  var currentPosition = 0;
+  var messageHeight = 70;
+
+  function scrollMessages() {
+    currentPosition += messageHeight;
+    messagesList.style.transform = `translateY(-${currentPosition}px)`;
+    messagesList.style.transition = "transform 0.6s ease-in-out";
+
+    if (currentPosition >= messageHeight * (messages.length)) {
+      setTimeout(() => {
+        messagesList.style.transition = "none";
+        currentPosition = 0;
+        messagesList.style.transform = `translateY(0)`;
+      }, 700);
+    }
+  }
+
+  setInterval(scrollMessages, 2000);
+</script>
+<!-- Include Chart.js -->
+
+<script>
+  // INCIDENT LINE CHART (Top Left)
+  const incidentCtx = document.getElementById('incidentChart').getContext('2d');
+  new Chart(incidentCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+      datasets: [{
+        label: 'Number of Incidents',
+        data: [1500, 1300, 1100, 1245],
+        backgroundColor: 'rgba(88, 101, 242, 0.3)',
+        borderColor: '#5865f2',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false }},
+      scales: {
+        x: { display: false },
+        y: { display: false }
+      }
+    }
+  });
+
+  // EXPENSES LINE CHART (Bottom Left)
+  const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+  new Chart(expenseCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+      datasets: [{
+        label: 'Expenses',
+        data: [2200, 23489, 2700, 4100],
+        backgroundColor: 'rgba(255, 255, 255, 0)',
+        borderColor: '#ff7b00',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#fff',
+        pointBorderColor: '#ff7b00',
+        pointHoverRadius: 6,
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return '$' + context.raw.toLocaleString();
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          beginAtZero: true,
+          ticks: { callback: val => '$' + val / 1000 + 'k' },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+
+  // INCIDENT STATUS DOUGHNUT CHART (Bottom Right)
+  const statusCtx = document.getElementById('statusChart').getContext('2d');
+  new Chart(statusCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Incident Solved', 'Action Underway', 'Action Pending'],
+      datasets: [{
+        data: [50, 35, 15],
+        backgroundColor: ['#7a73ff', '#ff6c1a', '#b5c6ff'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      cutout: '65%',
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            color: '#fff',
+            boxWidth: 12
+          }
+        }
+      }
+    }
+  });
+</script>
+
 
 </body>
 </html>
